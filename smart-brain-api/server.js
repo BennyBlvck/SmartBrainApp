@@ -8,14 +8,17 @@ import handleProfileGet from "./controllers/profile.js";
 // import handleImage from "./controllers/image.js";
 import funcs from "./controllers/image.js";
 
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = 'https://mnrwfwvbxkzbbsznyfag.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
+
 const db = knex({
-    client: 'pg',
+    client: supabase,
     connection: {
-      host : '127.0.0.1', // the same as local host or home
-      port : 5432, // this is the port number for windows not 3306
-      user : 'postgres', //user is not 'HP' but "postgres"
-      password : 'Blvckz93',
-      database : 'smart-brain'
+      host : supabaseUrl, // the same as local host or home
+      ssl :true
     }
 });
 
@@ -28,7 +31,7 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.send(database.users)
+    res.send('it is working');
 })
 
 app.post('/signin', (req, res) => { handleSignin(req, res, db, bcrypt) })
@@ -41,6 +44,6 @@ app.put('/image', (req, res) => { funcs.handleImage(req, res, db) });
 
 app.post('/imageurl', (req, res) => { funcs.handleApiCall(req, res) });
 
-app.listen(3000, ()=> {
-    console.log(`We are alive on 3000`);
+app.listen(process.env.PORT || 3000, ()=> {
+    console.log(`We are alive on ${process.env.PORT}`);
 })
