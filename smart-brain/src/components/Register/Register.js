@@ -24,7 +24,7 @@ class Register extends React.Component {
         }
 
         onSubmitSignIn = () => {
-            fetch ('https://github.com/BennyBlvck/SmartBrainApp/register', {
+            fetch ('https://chipper-flan-5944ec.netlify.app/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
