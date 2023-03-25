@@ -44,6 +44,17 @@ app.put('/image', (req, res) => { funcs.handleImage(req, res, db) });
 
 app.post('/imageurl', (req, res) => { funcs.handleApiCall(req, res) });
 
+app.post('/.netlify/functions/server/signin', (req, res) => {
+    handleSignin(req, res, db, bcrypt)
+    // Handle Netlify API signin logic
+});
+
+app.post('/.netlify/functions/server/register', (req, res) => {
+    handleRegister(req, res, db, bcrypt)
+    // Handle Netlify API register logic
+});
+
+
 app.listen(process.env.PORT || 3000, ()=> {
     console.log(`We are alive on ${process.env.PORT}`);
 })
