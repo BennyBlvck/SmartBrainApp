@@ -1,5 +1,5 @@
 import React from "react";
-import authFetch from "../../../netlify/functions/authFetch/authFetch";
+import authFetch from "../../netlify/functions/authFetch/authFetch";
 
 class Register extends React.Component {
   constructor(props) {
