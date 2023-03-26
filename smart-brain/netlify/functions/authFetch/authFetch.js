@@ -1,5 +1,3 @@
-// for a full working demo of Netlify Identity + Functions, see https://netlify-gotrue-in-react.netlify.com/
-
 import fetch from 'node-fetch';
 
 const authFetch = async (url, method = 'GET', data) => {
@@ -30,4 +28,4 @@ const authFetch = async (url, method = 'GET', data) => {
   }
 };
 
-export default authFetch;
+export default authFetch
