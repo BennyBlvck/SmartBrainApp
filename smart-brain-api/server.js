@@ -14,13 +14,20 @@ const supabaseKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 const db = knex({
-    client: 'supabase',
-    connection: {
-      host : supabase, // the same as local host or home
-      connectionString: supabaseUrl,
-      ssl :true 
-    }
-});
+    client: 'postgres',
+  connection: {
+    host: 'https://mnrwfwvbxkzbbsznyfag.supabase.co',
+    port: 5432,
+    user: 'Postgres',
+    password: 'DundeeBlvckz93#',
+    database: 'SmartBrain',
+    ssl: { rejectUnauthorized: false },
+  },
+  pool: {
+    min: 2,
+    max: 10,
+  },
+})
 
 
 const app = express();

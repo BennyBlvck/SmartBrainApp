@@ -13,7 +13,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 const db = knex({
     client: 'supabase',
     connection: {
-      host : supabaseUrl, // fixed host to supabaseUrl
+      host : supabase, // fixed host to supabaseUrl
       ssl: { rejectUnauthorized: false },
     }
 });
